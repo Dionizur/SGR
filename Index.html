@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Login - SGR Ando</title>
+    <link rel="stylesheet" href="./Pages/css/style.css" />
+</head>
+<body>
+
+    <div class="login-container">
+        <h1 id="formTitle">SGR - Rumo</h1>
+        <h2 class="subtitle">Sistema de Gerenciamento de Resíduos</h2>
+
+
+        <!-- Botões para alternar -->
+        <div class="toggle-buttons">
+            <button type="button" id="showRegister" class="active">Cadastrar</button>
+            <button type="button" id="showLogin">Login</button>
+        </div>
+
+        <!-- Formulário de Cadastro -->
+        <form id="registerForm" class="form-visible">
+            <div class="input-group">
+                <label for="regUsername">Usuário</label>
+                <input type="text" id="regUsername" placeholder="Digite seu usuário" required />
+            </div>
+            <div class="input-group">
+                <label for="regPassword">Senha</label>
+                <input type="password" id="regPassword" placeholder="Digite sua senha" required />
+            </div>
+            <button type="submit" class="btn-login">Cadastrar</button>
+        </form>
+
+        <!-- Formulário de Login -->
+        <form id="loginForm" class="form-hidden">
+            <div class="input-group">
+                <label for="logUsername">Usuário</label>
+                <input type="text" id="logUsername" placeholder="Digite seu usuário" required />
+            </div>
+            <div class="input-group">
+                <label for="logPassword">Senha</label>
+                <input type="password" id="logPassword" placeholder="Digite sua senha" required />
+            </div>
+            <button type="submit" class="btn-login">Entrar</button>
+        </form>
+
+        <div class="footer-text">
+            <p>Dados são salvos apenas no seu navegador</p>
+        </div>
+    </div>
+
+    <script src="./Pages/js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitação de Coleta</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="solicitacao-container">
+        <h1>Solicitação de Coleta</h1>
+        <p class="subtitle">Preencha os dados abaixo para solicitar a coleta de resíduos</p>
+
+        <form id="registerForm" class="form-visible">
+            <div class="input-group">
+                <label for="malha">Malha</label>
+                <select name="select" id= "malha">
+                    <option value="paulista">Paulsita</option>
+                    <option value="norte">Norte</option>
+                    <option value="central">Central</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="unidade">Unidade</label>
+                <input type="text" id="unidade" placeholder="Ex: Rio Claro" required>
+            </div>
+
+            <div class="input-group">
+                <label for="tipoResiduo">Tipo de Resíduo</label>
+                <input type="text" id="tipoResiduo" placeholder="Ex: Diversos contaminados" required>
+            </div>
+
+            <div class="input-group">
+                <label for="quantidade">Quantidade de Equipamentos</label>
+                <input type="text" id="quantidade" placeholder="Ex: Caçamba 26m" required>
+            </div>
+
+            <div class="input-group">
+                <label for="endereco">Endereço de Coleta</label>
+                <input type="text" id="endereco" placeholder="Rua, número, bairro, cidade - UF" required>
+            </div>
+
+            <div class="input-group">
+                <label for="unidadeColeta">Unidade de Coleta</label>
+                <input type="text" id="unidadeColeta" placeholder="Ex: Rio Claro" required>
+            </div>
+
+            <div class="input-group">
+                <label for="solicitante">Solicitante</label>
+                <input type="text" id="solicitante" placeholder="Seu nome" required>
+            </div>
+
+            <div class="input-group">
+                <label for="coordenador">Coordenador Responsável</label>
+                <input type="text" id="coordenador" placeholder="Nome do coordenador" required>
+            </div>
+
+            <div class="input-group">
+                <label for="ccResponsavel">CC do Responsável</label>
+                <input type="text" id="ccResponsavel" placeholder="Ex: 000AA" required>
+            </div>
+
+            <button type="submit" class="btn-solicitar">Enviar Solicitação</button>
+        </form>
+
+        <div class="footer-text">
+            <p>Dados são salvos apenas no seu navegador</p>
+        </div>
+    </div>
+
+    <script src="../Script/solicitacao.js"></script>
+</body>
+</html>

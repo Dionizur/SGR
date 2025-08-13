@@ -1,93 +1,67 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const showRegisterBtn = document.getElementById("showRegister");
-  const showLoginBtn = document.getElementById("showLogin");
-  const registerForm = document.getElementById("registerForm");
-  const loginForm = document.getElementById("loginForm");
-  const formTitle = document.getElementById("formTitle");
+    const showRegisterBtn = document.getElementById("showRegister");
+    const showLoginBtn = document.getElementById("showLogin");
+    const registerForm = document.getElementById("registerForm");
+    const loginForm = document.getElementById("loginForm");
+    const formTitle = document.getElementById("formTitle");
 
-  function getUsuarios() {
-      const data = localStorage.getItem("usuarios");
-      console.log("localStorage usuarios raw:", data);
-      return data ? JSON.parse(data) : [];
-  }
+    showRegisterBtn.addEventListener("click", () => {
+        formTitle.textContent = "Cadastro de Usuário";
+        registerForm.classList.add("form-visible");
+        registerForm.classList.remove("form-hidden");
+        loginForm.classList.add("form-hidden");
+        loginForm.classList.remove("form-visible");
 
-  function setUsuarios(usuarios) {
-      localStorage.setItem("usuarios", JSON.stringify(usuarios));
-      console.log("Usuarios salvos:", usuarios);
-  }
+        showRegisterBtn.classList.add("active");
+        showLoginBtn.classList.remove("active");
+    });
 
-  showRegisterBtn.addEventListener("click", () => {
-      formTitle.textContent = "Cadastro de Usuário";
-      registerForm.classList.add("form-visible");
-      registerForm.classList.remove("form-hidden");
-      loginForm.classList.add("form-hidden");
-      loginForm.classList.remove("form-visible");
+    showLoginBtn.addEventListener("click", () => {
+        formTitle.textContent = "Login no Sistema";
+        loginForm.classList.add("form-visible");
+        loginForm.classList.remove("form-hidden");
+        registerForm.classList.add("form-hidden");
+        registerForm.classList.remove("form-visible");
 
-      showRegisterBtn.classList.add("active");
-      showLoginBtn.classList.remove("active");
-  });
+        showLoginBtn.classList.add("active");
+        showRegisterBtn.classList.remove("active");
+    });
 
-  showLoginBtn.addEventListener("click", () => {
-      formTitle.textContent = "Login no Sistema";
-      loginForm.classList.add("form-visible");
-      loginForm.classList.remove("form-hidden");
-      registerForm.classList.add("form-hidden");
-      registerForm.classList.remove("form-visible");
+    registerForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
 
-      showLoginBtn.classList.add("active");
-      showRegisterBtn.classList.remove("active");
-  });
+        const username = document.getElementById("regUsername").value.trim();
+        const password = document.getElementById("regPassword").value.trim();
 
-  registerForm.addEventListener("submit", (e) => {
-      e.preventDefault();
+        const res = await fetch("/register", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username, password })
+        });
 
-      const username = document.getElementById("regUsername").value.trim();
-      const password = document.getElementById("regPassword").value.trim();
+        const data = await res.json();
+        alert(data.message);
+        if (res.ok) registerForm.reset();
+    });
 
-      console.log("Tentando cadastrar:", username, password);
+    loginForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
 
-      if (!username || !password) {
-          alert("Por favor, preencha todos os campos.");
-          return;
-      }
+        const username = document.getElementById("logUsername").value.trim();
+        const password = document.getElementById("logPassword").value.trim();
 
-      let usuarios = getUsuarios();
+        const res = await fetch("/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username, password })
+        });
 
-      if (usuarios.find(u => u.username === username)) {
-          alert("Usuário já existe!");
-          return;
-      }
+        const data = await res.json();
+        alert(data.message);
 
-      usuarios.push({ username, password });
-      setUsuarios(usuarios);
-
-      alert("Usuário cadastrado com sucesso!");
-      registerForm.reset();
-  });
-
-  loginForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-
-      const username = document.getElementById("logUsername").value.trim();
-      const password = document.getElementById("logPassword").value.trim();
-
-      console.log("Tentando login:", username, password);
-
-      if (!username || !password) {
-          alert("Por favor, preencha todos os campos.");
-          return;
-      }
-
-      let usuarios = getUsuarios();
-      let usuario = usuarios.find(u => u.username === username && u.password === password);
-
-      if (usuario) {
-          alert("Login realizado com sucesso!");
-          // Aqui pode redirecionar para painel
-      } else {
-          alert("Usuário ou senha incorretos!");
-      }
-
-      loginForm.reset();
-  });
+        if (res.ok) {
+            // Redirecionar para painel
+            // window.location.href = "painel.html";
+        }
+    });
 });

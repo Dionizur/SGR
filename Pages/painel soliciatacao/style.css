@@ -1,0 +1,83 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url('../../assets/img/fundo de tela rumo.png');
+    background-size: cover;       /* Faz a imagem preencher toda a tela */
+    background-position: center;  /* Centraliza a imagem */
+    background-repeat: no-repeat; /* Evita repetição da imagem */
+    font-family: Arial, Helvetica, sans-serif;
+}
+.solicitacao-container {
+    background-color: rgb(255, 255, 255);
+    padding: 2rem;
+    border-radius: 45px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    width: 500px;
+    max-width: 90%;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Título */
+.solicitacao-container h1 {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #003366;
+}
+
+/* Subtítulo */
+.solicitacao-container .subtitle {
+    text-align: center;
+    font-weight: 500;
+    font-size: 1.0rem;
+    color: #0B1F3A;
+    margin-bottom: 1.5rem;
+}
+
+/* Inputs */
+.solicitacao-container .input-group {
+    margin: 1rem;
+}
+
+.solicitacao-container label {
+    display: block;
+    margin-bottom: 0.3rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.solicitacao-container input,
+.solicitacao-container select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+/* Botão principal */
+.btn-solicitar {
+    width: 100%;
+    padding: 0.7rem;
+    background-color: #003366;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-solicitar:hover {
+    background-color: #00509e;
+    transform: scale(1.02);
+}
+
+/* Rodapé */
+.solicitacao-container .footer-text {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #555;
+}
